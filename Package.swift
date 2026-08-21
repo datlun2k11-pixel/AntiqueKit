@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "AntiqueKit",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v16)
     ],
     products: [
         .library(name: "AntiqueKit", targets: ["AntiqueKit"]),
