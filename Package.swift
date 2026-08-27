@@ -26,5 +26,4 @@ let package = Package(
         .target(name: "OnboardingKit", dependencies: ["ColourKit", "ConstraintKit", "ExtensionsKit", "FontKit"]),
         .target(name: "SettingsKit")
     ],
-    swiftLanguageModes: [.v6]
 )
