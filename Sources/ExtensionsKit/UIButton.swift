@@ -53,13 +53,11 @@ public extension UIButton.Configuration {
     static func glassConfiguration(_ size: Size, _ cornerStyle: CornerStyle,
                                    _ image: UIImage? = nil, _ text: String? = nil, _ scale: UIImage.SymbolScale = .large,
                                    _ tintColor: UIColour? = nil) -> UIButton.Configuration {
-        var configuration: UIButton.Configuration = {
-            if #available(iOS 26, *) {
-                return tintColor == nil ? .glass() : .prominentGlass()
-            } else {
-                return .filled()
-            }
-        }()
+        var configuration: UIButton.Configuration = .filled()
+        
+        if #available(iOS 26, *) {
+            configuration = tintColor == nil ? .glass() : .prominentGlass()
+        }
         
         if let tintColor {
             configuration.baseBackgroundColor = .clear
