@@ -53,11 +53,9 @@ public extension UIButton.Configuration {
     static func glassConfiguration(_ size: Size, _ cornerStyle: CornerStyle,
                                    _ image: UIImage? = nil, _ text: String? = nil, _ scale: UIImage.SymbolScale = .large,
                                    _ tintColor: UIColour? = nil) -> UIButton.Configuration {
+        // NOTE: .glass() / .prominentGlass() requires Xcode 26+ / iOS 26 SDK
+        // Using .filled() as fallback for Xcode 16 compatibility
         var configuration: UIButton.Configuration = .filled()
-        
-        if #available(iOS 26, *) {
-            configuration = tintColor == nil ? .glass() : .prominentGlass()
-        }
         
         if let tintColor {
             configuration.baseBackgroundColor = .clear
@@ -106,10 +104,6 @@ public extension UIButton.Configuration {
     static func configuration(_ size: Size, _ cornerStyle: CornerStyle,
                               _ image: UIImage? = nil, _ text: String? = nil, _ scale: UIImage.SymbolScale? = .large,
                               _ tintColor: UIColour? = nil) -> UIButton.Configuration {
-        if #available(iOS 26, *) {
-            glassConfiguration(size, cornerStyle, image, text, scale ?? .large, tintColor)
-        } else {
-            filledConfiguration(size, cornerStyle, image, text, scale ?? .large)
-        }
+        filledConfiguration(size, cornerStyle, image, text, scale ?? .large)
     }
 }
