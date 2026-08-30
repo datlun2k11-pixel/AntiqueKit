@@ -19,31 +19,19 @@ class OBListCell : UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
-        if #available(iOS 26.0, *) {
-            cornerConfiguration = .uniformCorners(radius: .fixed(24.0))
-        } else {
-            clipsToBounds = true
-            layer.cornerCurve = .continuous
-            layer.cornerRadius = 24.0
-        }
+        clipsToBounds = true
+        layer.cornerCurve = .continuous
+        layer.cornerRadius = 24.0
         
-        visualEffectView = if #available(iOS 26.0, *) {
-            UIVisualEffectView(effect: UIGlassEffect(style: .regular))
-        } else {
-            UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        }
+        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
         
         guard let visualEffectView else {
             return
         }
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 26.0, *) {
-            visualEffectView.cornerConfiguration = .uniformCorners(radius: .fixed(24.0))
-        } else {
-            visualEffectView.clipsToBounds = true
-            visualEffectView.layer.cornerCurve = .continuous
-            visualEffectView.layer.cornerRadius = 24.0
-        }
+        visualEffectView.clipsToBounds = true
+        visualEffectView.layer.cornerCurve = .continuous
+        visualEffectView.layer.cornerRadius = 24.0
         addSubview(visualEffectView)
         sendSubviewToBack(visualEffectView)
         
@@ -110,13 +98,9 @@ class OBListCell : UICollectionViewCell {
             visualEffectView.isHidden = true
             
             backgroundColor = .secondarySystemBackground
-            if #available(iOS 26.0, *) {
-                cornerConfiguration = .uniformCorners(radius: .fixed(24.0))
-            } else {
-                clipsToBounds = true
-                layer.cornerCurve = .continuous
-                layer.cornerRadius = 24.0
-            }
+            clipsToBounds = true
+            layer.cornerCurve = .continuous
+            layer.cornerRadius = 24.0
         }
         
         imageView.image = configuration.image?

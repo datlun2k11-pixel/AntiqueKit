@@ -38,12 +38,10 @@ public extension UIButton {
             }, for: .touchUpOutside)
         }
         
-        if #unavailable(iOS 26) {
-            button.layer.shadowColor = UIColour.black.cgColor
+        button.layer.shadowColor = UIColour.black.cgColor
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowOpacity = 1 / 5
             button.layer.shadowRadius = 20
-        }
         
         return button
     }

@@ -195,13 +195,9 @@ open class OBControllerWithList : UIViewController {
         }
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        if #available(iOS 26.0, *) {
-            collectionView.cornerConfiguration = .uniformCorners(radius: .fixed(20.0))
-        } else {
-            collectionView.clipsToBounds = true
-            collectionView.layer.cornerCurve = .continuous
-            collectionView.layer.cornerRadius = 20.0
-        }
+        collectionView.clipsToBounds = true
+        collectionView.layer.cornerCurve = .continuous
+        collectionView.layer.cornerRadius = 20.0
         if isPortrait {
             subviewToAddSubviews.insertSubview(collectionView, belowSubview: imageView)
         } else {
